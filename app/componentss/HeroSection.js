@@ -109,22 +109,23 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section id='home' className="relative h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
         <img
-          src="/images.jpeg"
+          src="/12bg.jpg"
           alt="Travel background"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover pt-14"
         />
         <div className="absolute inset-0 bg-black/40" />
       </div>
 
       {/* Navigation */}
-      
-
       {/* Hero Content */}
-      <div className="relative z-10 text-center text-white px-4">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extralight mb-6 md:mb-8 max-w-4xl tracking-wide leading-tight">
+      <div className="relative z-10 text-center text-black font-bold px-4">
+        <h1 
+          className="text-4xl sm:text-5xl md:text-6xl font-extralight mb-6 md:mb-8 max-w-4xl tracking-wide leading-tight bg-transparent"
+          style={{ background: "rgba(255,255,255,0.15)", borderRadius: "1rem", padding: "0.5rem 1.5rem" }}
+        >
           Begin your dream journey with our expert guidance
         </h1>
 

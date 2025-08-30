@@ -18,7 +18,7 @@ export default function ServicesSection() {
   return (
     <section id="our-services" className="py-6 px-6 bg-gray-50">
       <div className="max-w-6xl mx-auto">
-         <h1 className="text-4xl text-center lg:text-5xl font-semibold text-gray-800 mb-6">
+         <h1 className="text-4xl text-center lg:text-5xl font-semibold text-gray-800 ">
             Our Service 
             <div className="animated-gradient-bar mx-auto"></div>
             <style jsx>{`

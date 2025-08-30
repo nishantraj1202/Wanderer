@@ -6,8 +6,8 @@ import Navigation from './componentss/Navbar';
 
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
+  title: 'Wanderers Club',
+  description: 'Wanderers Club - Your Gateway to Unforgettable Travel Experiences',
   generator: 'v0.app',
 }
 
