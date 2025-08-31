@@ -7,6 +7,8 @@ import PackagesSection from './componentss/PackagesSection';
 import FAQSection from './componentss/gallery';
 import ReviewsSection from './componentss/ReviewsSection';
 import Contact from "./componentss/contact";
+import footer from "./componentss/footer";
+import Footer from "./componentss/footer";
 
 
 
@@ -22,6 +24,7 @@ export default function TravelLandingPage() {
       <FAQSection />
       <ReviewsSection />
       <Contact/>
+      <Footer/>
     </div>
   );
 }
