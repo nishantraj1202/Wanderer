@@ -1,7 +1,15 @@
 import { LayoutGridDemo } from "@/components/LayoutGrid";
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card";
+import React from "react";
 
-function ServiceCard({ image, title, description, className = "h-80" }) {
+interface ServiceCardProps {
+  image: string;
+  title: string;
+  description: string;
+  className?: string;
+}
+
+function ServiceCard({ image, title, description, className = "h-80" }: ServiceCardProps) {
   return (
     <Card className={`relative overflow-hidden ${className}`}>
       <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('${image}')` }} />
@@ -36,27 +44,7 @@ export default function ServicesSection() {
               }
             `}</style>
           </h1>
-        
         <div className="grid md:grid-cols-1 gap-6">
-          {/* <ServiceCard 
-            image="/beautiful-coastal-cliff-with-turquoise-water-and-g.png"
-            title="Comprehensive Travel Support"
-            description="24/7 customer service to assist you throughout your journey"
-            className="h-80"
-          />
-          <div className="grid gap-6">
-            <ServiceCard 
-              image="/volcanic-mountain-landscape-with-dramatic-clouds.png"
-              title="Expert Travel Advice"
-              description="Tips and guides to enhance your experiences"
-              className="h-36"
-            />
-            <ServiceCard 
-              image="/traditional-temple-pagoda-by-water-with-mountains.png"
-              title="Diverse Destinations"
-              description="Explore domestic and international locations"
-              className="h-36"
-            /> */}
              <LayoutGridDemo/>
           </div>
         </div>

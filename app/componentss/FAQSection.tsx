@@ -1,4 +1,5 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import React from "react";
 
 export default function FAQSection() {
   return (

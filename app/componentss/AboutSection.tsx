@@ -1,6 +1,7 @@
 'use client';
 
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
+import React from "react";
 
 export default function AboutSection() {
   return (
@@ -11,9 +12,7 @@ export default function AboutSection() {
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23000000' fill-opacity='0.05'%3E%3Cpath d='m0 40l40-40h-40v40z'/%3E%3C/g%3E%3C/svg%3E")`,
         }} />
       </div>
-
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-4">
-        
         {/* Clean Header */}
         <div className="mb-2">
           <h1 className="text-4xl text-center lg:text-5xl font-semibold text-gray-800 mb-6">
@@ -35,10 +34,8 @@ export default function AboutSection() {
             `}</style>
           </h1>
         </div>
-
         {/* Main Content Grid */}
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          
           {/* Left Content - Process Steps */}
           <div className="space-y-4">
             {/* Who We Are */}
@@ -57,7 +54,6 @@ export default function AboutSection() {
                 </div>
               </div>
             </div>
-
             {/* What We Do */}
             <div className="group">
               <div className="flex items-start gap-6">
@@ -74,7 +70,6 @@ export default function AboutSection() {
                 </div>
               </div>
             </div>
-
             {/* How We Help */}
             <div className="group">
               <div className="flex items-start gap-6">
@@ -92,33 +87,29 @@ export default function AboutSection() {
               </div>
             </div>
           </div>
-
           {/* Right Side - 3D Card */}
           <div className="flex justify-center">
             <CardContainer className="inter-var">
               <CardBody className="relative group/card bg-gray-50 dark:bg-zinc-800 dark:border-white/[0.2] border-black/[0.1] w-full sm:w-[28rem] h-auto rounded-xl p-6 border shadow-xl">
-                <CardItem translateZ="50" className="text-xl font-bold text-neutral-600 dark:text-neutral-200 mb-2">
+                <CardItem translateZ={50} className="text-xl font-bold text-neutral-600 dark:text-neutral-200 mb-2">
                   Find Your Next Adventure
                 </CardItem>
-                <CardItem translateZ="60" as="p" className="text-neutral-500 text-sm max-w-sm mt-2 mb-4 dark:text-neutral-400">
+                <CardItem translateZ={60} as="p" className="text-neutral-500 text-sm max-w-sm mt-2 mb-4 dark:text-neutral-400">
                   Hover over the card to explore a new dimension of travel.
                 </CardItem>
-                <CardItem translateZ="100" className="w-full mt-4">
+                <CardItem translateZ={100} className="w-full mt-4">
                   <img
                     src="/dramatic-coastal-cliffs-with-turquoise-water-and-r.png"
-                    height="1000"
-                    width="1000"
+                    height={1000}
+                    width={1000}
                     className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl transition-shadow"
                     alt="Coastal adventure"
                   />
                 </CardItem>
               </CardBody>
             </CardContainer>
-            
           </div>
-         
         </div>
-
         {/* Bottom CTA */}
         <div className="mt-2 text-center">
           <div className="inline-flex flex-col sm:flex-row items-center gap-4">
@@ -130,7 +121,6 @@ export default function AboutSection() {
             </button>
           </div>
         </div>
-
       </div>
     </section>
   );

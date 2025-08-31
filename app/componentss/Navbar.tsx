@@ -10,7 +10,6 @@ const Navigation = () => {
     <>
       <nav className="fixed top-0 w-full z-50 flex items-center justify-between p-4 md:p-8 text-white bg-black/20 backdrop-blur-md border-b border-white/10">
         <div className="text-xl md:text-2xl font-semibold">Wanderers Club</div>
-        
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
           {menuItems.map(item => {
@@ -26,7 +25,6 @@ const Navigation = () => {
             );
           })}
         </div>
-
         {/* Mobile Menu Button */}
         <button 
           className="md:hidden p-2" 
@@ -43,7 +41,6 @@ const Navigation = () => {
           </svg>
         </button>
       </nav>
-
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-40 md:hidden">
@@ -52,7 +49,6 @@ const Navigation = () => {
             className="fixed inset-0 bg-black/50 backdrop-blur-sm"
             onClick={() => setIsMenuOpen(false)}
           ></div>
-          
           {/* Menu Panel */}
           <div className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-gray-900/95 backdrop-blur-md border-l border-white/10 transform transition-transform duration-300 ease-in-out">
             <div className="flex flex-col pt-20 px-6">

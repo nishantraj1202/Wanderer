@@ -2,13 +2,22 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { CalendarDays, Users, Search } from "lucide-react";
-import Select from 'react-select';
+import Select, { SingleValue } from 'react-select';
 import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 import { format } from 'date-fns';
 
-// Prepare destinations for react-select
-const destinations = [
+interface DestinationOption {
+  value: string;
+  label: string;
+}
+
+interface GuestOption {
+  value: number;
+  label: string;
+}
+
+const destinations: DestinationOption[] = [
   "New Delhi", "Mumbai", "Bengaluru", "Chennai", "Kolkata",
   "Jaipur", "Udaipur", "Goa", "Kerala", "Rajasthan"
 ].map(city => ({
@@ -16,7 +25,7 @@ const destinations = [
   label: city
 }));
 
-const guests = [
+const guests: GuestOption[] = [
   { value: 1, label: "1 Guest" },
   { value: 2, label: "2 Guests" },
   { value: 3, label: "3 Guests" },
@@ -25,22 +34,22 @@ const guests = [
 ];
 
 export default function HeroSection() {
-  const [selectedDate, setSelectedDate] = useState(null);
-  const [selectedGuests, setSelectedGuests] = useState(null);
-  const [selectedDestination, setSelectedDestination] = useState(null);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [selectedGuests, setSelectedGuests] = useState<string | null>(null);
+  const [selectedDestination, setSelectedDestination] = useState<string | null>(null);
   const [showCalendar, setShowCalendar] = useState(false);
   const [showGuestsDropdown, setShowGuestsDropdown] = useState(false);
 
-  const calendarRef = useRef(null);
-  const guestsRef = useRef(null);
+  const calendarRef = useRef<HTMLDivElement>(null);
+  const guestsRef = useRef<HTMLDivElement>(null);
 
   // Close dropdowns when clicking outside
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (calendarRef.current && !calendarRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (calendarRef.current && !calendarRef.current.contains(event.target as Node)) {
         setShowCalendar(false);
       }
-      if (guestsRef.current && !guestsRef.current.contains(event.target)) {
+      if (guestsRef.current && !guestsRef.current.contains(event.target as Node)) {
         setShowGuestsDropdown(false);
       }
     };
@@ -53,7 +62,7 @@ export default function HeroSection() {
 
   // Custom styles for react-select
   const customStyles = {
-    control: (provided) => ({
+    control: (provided: any) => ({
       ...provided,
       backgroundColor: 'rgba(255,255,255,0.2)',
       border: 'none',
@@ -66,21 +75,21 @@ export default function HeroSection() {
         backgroundColor: 'rgba(255,255,255,0.3)',
       },
     }),
-    singleValue: (provided) => ({
+    singleValue: (provided: any) => ({
       ...provided,
       color: 'white',
     }),
-    placeholder: (provided) => ({
+    placeholder: (provided: any) => ({
       ...provided,
       color: 'rgba(255,255,255,0.7)',
     }),
     indicatorSeparator: () => ({ display: 'none' }),
-    dropdownIndicator: (provided) => ({
+    dropdownIndicator: (provided: any) => ({
       ...provided,
       color: 'white',
       '&:hover': { color: 'white' },
     }),
-    menu: (provided) => ({
+    menu: (provided: any) => ({
       ...provided,
       backgroundColor: 'rgba(0,0,0,0.9)',
       border: '1px solid rgba(255,255,255,0.1)',
@@ -88,7 +97,7 @@ export default function HeroSection() {
       overflow: 'hidden',
       zIndex: 9999,
     }),
-    option: (provided, state) => ({
+    option: (provided: any, state: any) => ({
       ...provided,
       backgroundColor: state.isFocused ? 'rgba(255,255,255,0.1)' : 'transparent',
       color: 'white',
@@ -124,18 +133,16 @@ export default function HeroSection() {
         {/* Search Form */}
         <div className="mx-auto max-w-lg md:max-w-4xl">
           <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 p-2 mb-8 shadow-lg relative z-20">
-            
             {/* Destination Dropdown */}
             <div className="flex-1 w-full text-black z-30">
               <Select
                 options={destinations}
                 placeholder="Search destination"
-                onChange={(option) => setSelectedDestination(option.label)}
+                onChange={(option: SingleValue<DestinationOption>) => setSelectedDestination(option ? option.label : null)}
                 styles={customStyles}
                 classNamePrefix="react-select"
               />
             </div>
-
             {/* Date Picker */}
             <div className="relative flex-1 z-20" ref={calendarRef}>
               <button
@@ -150,14 +157,13 @@ export default function HeroSection() {
                   {selectedDate ? format(selectedDate, 'PPP') : "Select a date"}
                 </span>
               </button>
-              
               {showCalendar && (
                 <div className="absolute z-50 mt-2 left-1/2 -translate-x-1/2 p-3 bg-black/90 backdrop-blur-md rounded-lg shadow-xl border border-gray-700 text-white w-72">
                   <DayPicker
                     mode="single"
-                    selected={selectedDate}
-                    onSelect={(date) => {
-                      setSelectedDate(date);
+                    selected={selectedDate ?? undefined}
+                    onSelect={(date: Date | undefined) => {
+                      setSelectedDate(date ?? null);
                       setShowCalendar(false);
                     }}
                     disabled={{ before: new Date() }}
@@ -174,7 +180,6 @@ export default function HeroSection() {
                 </div>
               )}
             </div>
-
             {/* Guests Dropdown */}
             <div className="relative flex-1 w-full z-20" ref={guestsRef}>
               <button
@@ -189,7 +194,6 @@ export default function HeroSection() {
                   {selectedGuests || "No. of Guests"}
                 </span>
               </button>
-              
               {showGuestsDropdown && (
                 <div className="absolute z-50 w-full mt-2 left-0 top-full p-2 bg-black/90 backdrop-blur-md rounded-lg shadow-xl border border-gray-700 text-white max-h-40 overflow-y-auto">
                   <div className="flex flex-col gap-1">
@@ -209,7 +213,6 @@ export default function HeroSection() {
                 </div>
               )}
             </div>
-
             {/* Explore Button */}
             <button className="w-full md:w-auto bg-white text-black hover:bg-gray-200 rounded-full px-8 py-3 font-semibold transition-colors shadow-lg flex items-center justify-center gap-2">
               <Search className="w-4 h-4" />
@@ -218,7 +221,6 @@ export default function HeroSection() {
           </div>
         </div>
       </div>
-
       {/* Bottom Left CTA */}
       <div className="absolute bottom-8 left-8 text-white z-10 px-4 md:px-0">
         {/* <p className="text-sm md:text-base max-w-xs md:max-w-sm mb-4">

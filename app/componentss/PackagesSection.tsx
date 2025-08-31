@@ -1,7 +1,14 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 
-function PackageCard({ image, duration, title, description }) {
+interface PackageCardProps {
+  image: string;
+  duration: string;
+  title: string;
+  description: string;
+}
+
+function PackageCard({ image, duration, title, description }: PackageCardProps) {
   return (
     <Card className="relative overflow-hidden h-80">
       <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('${image}')` }} />
@@ -30,7 +37,6 @@ export default function PackagesSection() {
         <h2 className="text-3xl md:text-4xl font-light mb-12 text-center">
           Discover our exceptional travel packages
         </h2>
-        
         <div className="grid md:grid-cols-3 gap-6">
           {[
             { 

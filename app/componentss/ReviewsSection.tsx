@@ -1,7 +1,13 @@
-import { Card } from "@/components/ui/card"
-import { Star } from "lucide-react"
+import { Card } from "@/components/ui/card";
+import { Star } from "lucide-react";
+import React from "react";
 
-function ReviewCard({ name, review }) {
+interface ReviewCardProps {
+  name: string;
+  review: string;
+}
+
+function ReviewCard({ name, review }: ReviewCardProps) {
   return (
     <Card className="p-6">
       <div className="flex items-start gap-4">
@@ -30,7 +36,6 @@ export default function ReviewsSection() {
       <div className="max-w-6xl mx-auto">
         <p className="text-blue-500 text-sm font-medium mb-4 text-center">//REVIEWS</p>
         <h2 className="text-3xl md:text-4xl font-light mb-12 text-center">Your trusted travel partner</h2>
-        
         <div className="grid md:grid-cols-2 gap-8">
           {[
             { name: "Alex Buckmaster", review: "Customized itinerary perfectly matched my interests." },
