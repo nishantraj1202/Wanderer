@@ -3,7 +3,6 @@
 import HeroSection from "./componentss/HeroSection";
 import AboutSection from './componentss/AboutSection';
 import ServicesSection from './componentss/ServicesSection';
-import PartnersSection from './componentss/PartnersSection';
 import PackagesSection from './componentss/PackagesSection';
 import FAQSection from './componentss/FAQSection';
 import ReviewsSection from './componentss/ReviewsSection';
@@ -16,7 +15,7 @@ export default function TravelLandingPage() {
       <HeroSection />
       <AboutSection />
       <ServicesSection />
-      <PartnersSection />
+      {/* <PartnersSection /> */}
       <PackagesSection />
       <FAQSection />
       <ReviewsSection />

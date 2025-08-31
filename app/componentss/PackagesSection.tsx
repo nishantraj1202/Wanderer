@@ -57,7 +57,7 @@ const packages = [
 
 export default function PackagesSection() {
   return (
-    <section className="py-16 bg-gray-50">
+    <section id='travel-packages' className="py-6 bg-gray-50">
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -66,6 +66,21 @@ export default function PackagesSection() {
           className="text-4xl font-bold text-center mb-12"
         >
           Featured Packages
+          <div className="animated-gradient-bar mx-auto"></div>
+            <style jsx>{`
+              .animated-gradient-bar {
+                height: 0.3rem;
+                width: 7rem;
+                border-radius: 9999px;
+                background: linear-gradient(to right, #3b82f6, #22c55e);
+                animation: widenShrink 2.5s infinite ease-in-out;
+              }
+              @keyframes widenShrink {
+                0% { width: 7rem; }
+                50% { width: 12rem; }
+                100% { width: 7rem; }
+              }
+            `}</style>
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
