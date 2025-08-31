@@ -6,7 +6,7 @@ const Navigation = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const menuItems = ["Home", "About us", "Our services", "Travel-Packages", "Testimonials", "Contact"];
+  const menuItems = ["Home", "About us", "Our services", "Travel-Packages", "Gallery", "Testimonials", "Contact"];
 
   // Scroll smoothly to section
   const scrollToSection = (id: string) => {
