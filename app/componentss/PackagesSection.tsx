@@ -1,64 +1,139 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+'use client';
 
-interface PackageCardProps {
-  image: string;
-  duration: string;
-  title: string;
-  description: string;
-}
+import React from 'react';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Star, MapPin, Calendar, Users } from 'lucide-react';
 
-function PackageCard({ image, duration, title, description }: PackageCardProps) {
-  return (
-    <Card className="relative overflow-hidden h-80">
-      <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('${image}')` }} />
-      <div className="absolute inset-0 bg-black/30" />
-      <div className="absolute top-4 left-4">
-        <span className="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">
-          {duration}
-        </span>
-      </div>
-      <CardContent className="relative z-10 p-6 h-full flex flex-col justify-end text-white">
-        <h3 className="text-xl font-light mb-2">{title}</h3>
-        <p className="text-sm opacity-90 mb-4">{description}</p>
-        <Button variant="outline" className="self-start text-white border-white hover:bg-white hover:text-black bg-transparent">
-          Choose package
-        </Button>
-      </CardContent>
-    </Card>
-  );
-}
+const maldivesPackage = '/images/assets/maldives-package.jpg';
+const parisPackage = '/images/assets/paris-package.jpg';
+const safariPackage = '/images/assets/safari-package.jpg';
+
+
+const packages = [
+  {
+    id: 1,
+    image: maldivesPackage,
+    title: "Kerala Backwaters",
+    location: "Alleppey, Kerala",
+    duration: "5 Days",
+    price: "₹25,999",
+    originalPrice: "₹32,999",
+    rating: 4.9,
+    reviews: 128,
+    maxGuests: 4,
+    highlight: "Houseboat Stay",
+  },
+  {
+    id: 2,
+    image: parisPackage,
+    title: "Rajasthan Heritage",
+    location: "Jaipur, Udaipur & Jodhpur",
+    duration: "8 Days",
+    price: "₹35,999",
+    originalPrice: "₹45,999",
+    rating: 4.8,
+    reviews: 95,
+    maxGuests: 6,
+    highlight: "Palace Tours",
+  },
+  {
+    id: 3,
+    image: safariPackage,
+    title: "Ladakh Adventure",
+    location: "Leh, Ladakh",
+    duration: "10 Days",
+    price: "₹42,999",
+    originalPrice: "₹52,999",
+    rating: 4.9,
+    reviews: 87,
+    maxGuests: 8,
+    highlight: "Mountain Adventure",
+  },
+];
 
 export default function PackagesSection() {
   return (
-    <section className="py-16 px-6">
-      <div className="max-w-6xl mx-auto">
-        <p className="text-blue-500 text-sm font-medium mb-4 text-center">//OUR PACKAGES</p>
-        <h2 className="text-3xl md:text-4xl font-light mb-12 text-center">
-          Discover our exceptional travel packages
-        </h2>
-        <div className="grid md:grid-cols-3 gap-6">
-          {[
-            { 
-              image: "/traditional-balinese-temple-with-person-in-pink-cl.png",
-              duration: "5 day, 4 night",
-              title: "All-Inclusive Packages",
-              description: "Everything from flights to accommodation and activities"
-            },
-            {
-              image: "/traditional-cultural-dancers-in-colorful-costumes.png", 
-              duration: "6 day, 4 night",
-              title: "Cultural Packages",
-              description: "Heritage tours and local cultural performances"
-            },
-            {
-              image: "/dramatic-coastal-cliffs-with-turquoise-water-and-r.png",
-              duration: "5 day, 4 night", 
-              title: "Adventure Packages",
-              description: "Hiking, diving, and extreme sports experiences"
-            }
-          ].map(pkg => (
-            <PackageCard key={pkg.title} {...pkg} />
+    <section className="py-16 bg-gray-50">
+      <div className="container mx-auto px-4">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-4xl font-bold text-center mb-12"
+        >
+          Featured Packages
+        </motion.h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {packages.map((pkg, index) => (
+            <motion.div
+              key={pkg.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              className="h-full"
+            >
+              <Card className="overflow-hidden hover:shadow-lg transition rounded-2xl h-full flex flex-col">
+                {/* Image */}
+                <div className="relative h-56 w-full">
+                  <Image
+                    src={pkg.image}
+                    alt={pkg.title}
+                    fill
+                    className="object-cover"
+                  />
+                  <Badge className="absolute top-4 left-4 bg-gradient-ocean-sunset text-white border-0">
+                    {pkg.highlight}
+                  </Badge>
+                </div>
+
+                {/* Content */}
+                <div className="p-6 flex flex-col flex-1">
+                  <h3 className="text-xl font-bold mb-2">{pkg.title}</h3>
+
+                  <div className="flex items-center gap-2 text-muted-foreground mb-3 text-sm">
+                    <MapPin size={16} />
+                    {pkg.location}
+                  </div>
+
+                  <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
+                    <div className="flex items-center gap-1">
+                      <Calendar size={16} />
+                      {pkg.duration}
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Users size={16} />
+                      Up to {pkg.maxGuests}
+                    </div>
+                  </div>
+
+                  {/* Price + Rating */}
+                  <div className="flex items-center justify-between mt-auto">
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-lg font-bold text-primary">{pkg.price}</span>
+                        <span className="text-sm line-through text-muted-foreground">{pkg.originalPrice}</span>
+                      </div>
+                      <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                        <Star size={14} className="text-accent fill-current" />
+                        {pkg.rating} ({pkg.reviews})
+                      </div>
+                    </div>
+
+                    <Link
+                      href={`/packages/${pkg.id}`}
+                      className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition"
+                    >
+                      View Details
+                    </Link>
+                  </div>
+                </div>
+              </Card>
+            </motion.div>
           ))}
         </div>
       </div>
