@@ -3,9 +3,9 @@ import Navbar from "./Navbar";
 import HeroSection from "./HeroSection";
 import AboutSection from "./AboutSection";
 import ServicesSection from "./ServicesSection";
-import PartnersSection from "./PartnersSection";
+
 import PackagesSection from "./PackagesSection";
-import FAQSection from "./FAQSection";
+import FAQSection from "./gallery";
 import ReviewsSection from "./ReviewsSection";
 
 export default function TravelLandingPage() {
@@ -15,7 +15,7 @@ export default function TravelLandingPage() {
       <HeroSection />
       <AboutSection />
       <ServicesSection />
-      <PartnersSection />
+      
       <PackagesSection />
       <FAQSection />
       <ReviewsSection />

@@ -4,8 +4,10 @@ import HeroSection from "./componentss/HeroSection";
 import AboutSection from './componentss/AboutSection';
 import ServicesSection from './componentss/ServicesSection';
 import PackagesSection from './componentss/PackagesSection';
-import FAQSection from './componentss/FAQSection';
+import FAQSection from './componentss/gallery';
 import ReviewsSection from './componentss/ReviewsSection';
+import Contact from "./componentss/contact";
+
 
 
 export default function TravelLandingPage() {
@@ -19,6 +21,7 @@ export default function TravelLandingPage() {
       <PackagesSection />
       <FAQSection />
       <ReviewsSection />
+      <Contact/>
     </div>
   );
 }
