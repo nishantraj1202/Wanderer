@@ -170,7 +170,7 @@ const GalleryDetailPage = () => {
   }
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-blue-50 via-orange-50 to-purple-50">
+    <div className="pt-25 min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white/80 backdrop-blur-sm sticky top-0 z-40 border-b">
         <div className="container mx-auto px-4 py-4">
@@ -407,7 +407,7 @@ const GalleryDetailPage = () => {
           </motion.div>
         </motion.div>
       )}
-    </section>
+    </div>
   );
 };
 
